@@ -1,0 +1,17 @@
+#Par contre : ce type d'inscription dans l'url n'est pas pratique pour le référencement
+#je crée donc un fichier htaccess qui me permet de fluidifier tous ça: 
+#exemple : http://localhost/biblio/index.php?page=accueil
+#devient --> http://localhost/biblio/accueil
+
+
+#commentaire :ici je demande l'activation la réécriture d'url
+RewriteEngine On
+
+#commentaire : eviter de lister les fichiers directements via la barre d'url ( sécurité )
+#commentaire : f = fichier
+#commentaire : d = dossier
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#commentaire : ici permet la réécriture d'url avec le numéro de la page demander
+RewriteRule ^(.*)$ index.php?page=$1
